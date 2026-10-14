@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vajra": "node vajra.js",
+    "check:sql": "node vajra.js check"
+  },
+  "bin": {
+    "vajra": "./vajra.js"
   },
   "dependencies": {
     "react": "^19.2.8",

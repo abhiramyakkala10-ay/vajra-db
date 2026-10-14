@@ -1,0 +1,5 @@
+[policy.production]
+allow_drop_column = false
+allow_truncate = false
+require_lock_timeout = "5s"
+signature = "ed25519_required"

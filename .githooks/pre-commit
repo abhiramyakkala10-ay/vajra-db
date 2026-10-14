@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+cd "$ROOT_DIR"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
+if [ -z "$FILES" ]; then
+  exit 0
+fi
+
+for file in $FILES; do
+  case "$file" in
+    *.sql)
+      echo "VajraDB: validating $file"
+      node vajra.js check "$file"
+      ;;
+  esac
+done
+
+echo "VajraDB: pre-commit validation passed."
